@@ -27,7 +27,9 @@ attr_reader :id
   end
 
   def self.create(name:, breed:)
-    Dog.new(name:name, breed:breed).save
+    dog = Dog.new(name:name, breed:breed)
+    dog.save
+    dog
   end
 
   def self.find_by_id(id)
