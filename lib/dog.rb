@@ -25,7 +25,9 @@ attr_accessor :name, :breed, :id
   end
 
   def self.create(name:, breed:)
-    self.new(name:name, breed:breed).save
+    dog = self.new(name:name, breed:breed)
+    dog.save
+    dog
   end
 
   def self.find_by_id(id)
