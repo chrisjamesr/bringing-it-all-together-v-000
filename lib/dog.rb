@@ -77,9 +77,9 @@ attr_reader :id
       row = dog[0]
       dog = Dog.new_from_db(row)
     else
-      binding.pry
-      Dog.create(name:name, breed:breed)
+      dog = Dog.create(name:name, breed:breed)
     end
+    dog
   end
 
   def update
