@@ -1,7 +1,7 @@
 require 'pry'
 class Dog
-attr_accessor :name, :breed, :id
-
+attr_accessor :name, :breed
+attr_reader :id
 
   def initialize(id: nil, name:, breed:)
     @name = name
@@ -55,8 +55,8 @@ attr_accessor :name, :breed, :id
 
       DB[:conn].execute(sql, self.name, self.breed)
       @id = DB[:conn].execute("SELECT id FROM dogs WHERE name = ?", self.name)[0].first
-      self
     end
+    self
   end
 
   def self.find_by_name(name)
