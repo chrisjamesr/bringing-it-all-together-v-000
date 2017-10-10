@@ -72,6 +72,7 @@ attr_reader :id
 
   def self.find_or_create_by(name:, breed:)
     dog_data = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)
+    binding.pry
     if !dog.empty?
       row = dog_data[0]
       dog = Dog.new_from_db(row)
