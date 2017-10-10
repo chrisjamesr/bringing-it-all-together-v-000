@@ -1,7 +1,7 @@
 require 'pry'
 class Dog
-attr_accessor :name, :breed
-attr_reader :id
+attr_accessor :name, :breed, :id
+
 
   def initialize(id: nil, name:, breed:)
     @name = name
@@ -74,9 +74,9 @@ attr_reader :id
     dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = '#{name}' AND breed = '#{breed}'")
     if !dog.empty?
       row = dog[0]
-        Dog.new(id: row[0], name: row[1], breed: row[2])
+        Dog.new_from_db(row)
     else
-        self.create(name:name, breed:breed)
+        Dog.create(name:name, breed:breed)
     end
   end
 
